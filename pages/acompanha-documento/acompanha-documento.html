@@ -14,8 +14,8 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let documento of documentos" >
+  <ion-list [virtualScroll]="documentos">
+    <ion-item-sliding *virtualItem="let documento">
       
       <button ion-item (click)="detalharDocumento(documento)">
         <documento-list-view [documento]="documento"></documento-list-view>
@@ -23,7 +23,7 @@
 
       <ion-item-options>
         
-        <button ion-button clear icon-only (click)="excluirDocumento(documento)">
+        <button ion-button clear icon-only>
           <ion-icon name="trash"></ion-icon>
         </button>
 

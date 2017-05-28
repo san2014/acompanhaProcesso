@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
+import { Observable } from "rxjs/Observable";
 import { UtilProvider } from "./util-provider";
-import { AppConfig } from './../constantes/app-config';
 
 @Injectable()
 export class DocumentoProvider {
@@ -19,7 +19,7 @@ export class DocumentoProvider {
 
   initialize(){
     
-    this.getDocumentosAdicionados();
+    //this.getDocumentosAdicionados();
 
   }
 
@@ -28,6 +28,8 @@ export class DocumentoProvider {
     return new Promise(resolve => {
 
      this.local.get('list_docs').then(data => {
+
+        data = this.utilProvider.trataArray(data);
 
         this.documentosList = data;
         
@@ -41,62 +43,24 @@ export class DocumentoProvider {
   }
 
 
-  obterIdDocValido(documento: any): Promise<any>{
-
-    let url: string;
-
-    url = AppConfig.apiEndpoint;
-    url = url + 'obterIdDocValido';
-    url = url + '&tipoDoc=' +documento.tipoDocumentoModel.id;
-    url = url + '&cein=' +documento.centroInformacaoModel.numero;
-    url = url + '&ano=' +documento.ano;
-    url = url + '&numero=' +documento.numero;
-    url = url + '&codigoAcesso=' +documento.codigoAcesso;
-
-    return new Promise(resolve => {
-
-      this.http.get(url).map(res => res.json())
-        .subscribe(data => {
-
-          resolve(data);
-          
-        }, err => resolve(null));
-
-      })
-
-    
-     
-  }  
-
   addDocumento(documento: any){
 
     if (this.documentosList == undefined){
       
-      this.documentosList = [];
+      this.documentosList = [documento];
+
+    }else{
+
+      this.documentosList.unshift(this.documentosList);
 
     }
 
-    this.documentosList.unshift(documento);
-
-    console.log(documento);
-    
-    this.refreshListDocs(this.documentosList);
-
-  }
-
-  refreshListDocs(documentosList: Array<any>){
-
-    this.local.set('list_docs', documentosList);
+    console.log(this.documentosList);
+    this.local.set('list_docs', this.documentosList);
 
   }
 
   documentoJaExiste(documento: any): boolean{
-    
-    if (this.documentosList == null){
-
-      return false;
-
-    }
 
     for (let row of this.documentosList){
       
@@ -125,6 +89,28 @@ export class DocumentoProvider {
       {id: 6, data: Date.now(), estagio: 'Arquivar', parecer:'parecer 6'}
     ]
 
+  }
+
+  obterIdDocValido(documento: any){
+
+    let url: string;
+
+/*    url = 'http://172.24.83.240:8080/ServicosRestful/documentoResource/obterporNumero';
+    url = url + '/' +documento.tipoDocumentoModel.id;
+    url = url + '/' +documento.centroInformacaoModel.numero;
+    url = url + '/' +documento.ano;
+    url = url + '/' +documento.numero;
+    url = url + '/' +documento.codigoAcesso;*/
+
+    url = 'http://www.sucom.ba.gov.br/servicosonline/Web/service/proxyService.php?acao=obterIdDocValido';
+    url = url + '&tipoDoc=' +documento.tipoDocumentoModel.id;
+    url = url + '&cein=' +documento.centroInformacaoModel.numero;
+    url = url + '&ano=' +documento.ano;
+    url = url + '&numero=' +documento.numero;
+    url = url + '&codigoAcesso=' +documento.codigoAcesso;
+
+    return this.http.get(url).map(res => res.json())
+     
   }
 
 }
