@@ -11,7 +11,7 @@ import { DocumentoProvider } from './../../providers/documento-provider';
 })
 export class AcompanhaDocumento {
 
-  documentos: Array<any>;
+  documentos: any[];
 
   constructor(
     public navCtrl: NavController, 
@@ -24,29 +24,20 @@ export class AcompanhaDocumento {
 
   initialize(){
 
+    this.documentos = [];
+
 		this.documentoProvider.getDocumentosAdicionados().then( data => {
 			
 			this.documentos = data;
 
-      console.log(this.documentos);
-
 		}); 
+
 
   }
 
   detalharDocumento(documento: any){
     
     this.navCtrl.push(DocumentoListDetail, {'documento' : documento});
-
-  }
-
-  excluirDocumento(documento: any){
-
-    let index = this.documentos.indexOf(documento);
-
-    this.documentos.splice(index, 1);
-
-    this.documentoProvider.refreshListDocs(this.documentos);
 
   }
 
