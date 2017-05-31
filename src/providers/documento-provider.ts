@@ -3,7 +3,11 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { UtilProvider } from "./util-provider";
+<<<<<<< HEAD
 import { EndpointConfig } from './../constantes/endpoint-config';
+=======
+import { AppConfig } from './../constantes/app-config';
+>>>>>>> 3e7cdc0634a6b15add7302b5f5f87acf8de53433
 
 @Injectable()
 export class DocumentoProvider {
@@ -18,6 +22,7 @@ export class DocumentoProvider {
   }
 
   initialize(){
+<<<<<<< HEAD
     
     this.getDocumentosAdicionados();
 
@@ -71,6 +76,66 @@ export class DocumentoProvider {
 
     }
 
+=======
+    
+    this.getDocumentosAdicionados();
+
+  }
+
+  getDocumentosAdicionados() : Promise<any>{
+
+    return new Promise(resolve => {
+
+     this.local.get('list_docs').then(data => {
+
+        this.documentosList = data;
+        
+        resolve(this.documentosList);
+
+      });        
+
+    })
+    
+
+  }
+
+
+  obterIdDocValido(documento: any): Promise<any>{
+
+    let url: string;
+
+    url = AppConfig.apiEndpoint;
+    url = url + 'obterIdDocValido';
+    url = url + '&tipoDoc=' +documento.tipoDocumentoModel.id;
+    url = url + '&cein=' +documento.centroInformacaoModel.numero;
+    url = url + '&ano=' +documento.ano;
+    url = url + '&numero=' +documento.numero;
+    url = url + '&codigoAcesso=' +documento.codigoAcesso;
+
+    return new Promise(resolve => {
+
+      this.http.get(url).map(res => res.json())
+        .subscribe(data => {
+
+          resolve(data);
+          
+        }, err => resolve(null));
+
+      })
+
+    
+     
+  }  
+
+  addDocumento(documento: any){
+
+    if (this.documentosList == undefined){
+      
+      this.documentosList = [];
+
+    }
+
+>>>>>>> 3e7cdc0634a6b15add7302b5f5f87acf8de53433
     this.documentosList.unshift(documento);
 
     console.log(documento);

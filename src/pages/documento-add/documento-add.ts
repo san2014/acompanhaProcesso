@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import { AcompanhaDocumento } from './../acompanha-documento/acompanha-documento';
+
+>>>>>>> 3e7cdc0634a6b15add7302b5f5f87acf8de53433
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -90,6 +95,7 @@ export class DocumentoAddPage {
           loading.dismiss();
 
           this.presentToast('Documento adicionado com sucesso!');
+
 
           this.navCtrl.pop();
 
