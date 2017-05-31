@@ -28,8 +28,6 @@ export class AcompanhaDocumento {
 			
 			this.documentos = data;
 
-      console.log(this.documentos);
-
 		}); 
 
   }

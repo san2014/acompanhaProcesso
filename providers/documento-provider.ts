@@ -55,7 +55,6 @@ export class DocumentoProvider {
 
     }
 
-    console.log(this.documentosList);
     this.local.set('list_docs', this.documentosList);
 
   }

@@ -1,5 +1,3 @@
-import { AcompanhaDocumento } from './../acompanha-documento/acompanha-documento';
-
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -79,8 +77,6 @@ export class DocumentoAddPage {
     this.documentoProvider.obterIdDocValido(this.documento)
       .then(data =>{
 
-        console.log(data);
-
         if (data == undefined){
          
           loading.dismiss();
@@ -95,7 +91,7 @@ export class DocumentoAddPage {
 
           this.presentToast('Documento adicionado com sucesso!');
 
-          this.navCtrl.push(AcompanhaDocumento);
+          this.navCtrl.pop();
 
         }
 
