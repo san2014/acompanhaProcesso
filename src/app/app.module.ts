@@ -6,6 +6,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,7 +14,7 @@ import { DocumentoListDetail } from './../components/documento-list-detail/docum
 import { DocumentoListView } from './../components/documento-list-view/documento-list-view';
 import { DocumentoProvider } from "../providers/documento-provider";
 import { UtilProvider } from "../providers/util-provider";
-import { IonicStorageModule } from '@ionic/storage';
+import { DetailHistoricoPage } from './../pages/detail-historico/detail-historico';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AcompanhaDocumento,
     DocumentoListDetail,
     DocumentoListView,
-    DocumentoAddPage
+    DocumentoAddPage,
+    DetailHistoricoPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AcompanhaDocumento,
     DocumentoListDetail,
     DocumentoListView,
-    DocumentoAddPage
+    DocumentoAddPage,
+    DetailHistoricoPage
   ],
   providers: [
     StatusBar,

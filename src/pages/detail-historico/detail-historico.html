@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Movimentacao</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+  
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <h2>Estágio</h2>
+          <p>{{movimentacao.estagioModel.descricao}}</p>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <h2>Data</h2>
+          <p>{{movimentacao.dataOrigemFormatada}}</p>
+        </ion-item>
+      </ion-col>      
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <h2>Setor</h2>
+          <p>{{movimentacao.centroInformacaoOrigemModel.descricao}}</p>
+        </ion-item>
+      </ion-col>      
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <h2>Parecer:</h2>
+          <ion-item text-wrap>
+            {{movimentacao.parecer}}
+          </ion-item>
+        </ion-item>
+      </ion-col>      
+    </ion-row>
+
+  </ion-grid>
+
+  
+
+
+</ion-content>

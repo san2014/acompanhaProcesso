@@ -5,7 +5,8 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content padding>
+
+<ion-content class="list-content-page">
   <ion-card>
     <ion-card-header>
       {{documento.centroInformacaoModel.numero}}/{{documento.ano}}/{{documento.numero}}
@@ -15,45 +16,19 @@
     </ion-card-content>
   </ion-card>
 
-  
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label floating>
-            Histórico:
-          </ion-label>
-        </ion-item>
-      </ion-col>
-    </ion-row>  
+  <ion-list>
 
-    <ion-grid>
+    <ion-list-header>
+      Histórico do Documento
+    </ion-list-header>    
 
-      <ion-row>
-        <ion-col>
-          <strong>Data</strong>
-        </ion-col>
-        <ion-col>
-          <strong>Estágio</strong>
-        </ion-col>
-        <ion-col>
-          <strong>Parecer</strong>
-        </ion-col>            
-      </ion-row>
+    <button ion-item *ngFor="let mov of historico" (click)="detailMovimentacao(mov)">
+        <h2>{{ mov.estagioModel.descricao }}</h2>
+        <p class="text-medium"> {{ mov.centroInformacaoOrigemModel.descricao }}</p>
+        <ion-note item-end>{{ mov.dataOrigemFormatada }}</ion-note>
+    </button> 
 
-
-      <ion-row *ngFor="let mov of historico">
-        <ion-col>
-          {{ mov.data | date: 'dd/MM/yyyy' }}
-        </ion-col>
-        <ion-col>
-          {{ mov.estagio }}
-        </ion-col>
-        <ion-col>
-          {{ mov.parecer }}
-        </ion-col>            
-      </ion-row>   
-
-    </ion-grid>
+  </ion-list>
 
 </ion-content>
 

@@ -22,4 +22,12 @@ export class EndpointConfig{
 
     }
 
+    public static getUrlObteeHistoricDoc(id: number): string {
+
+        let url : string = `${this.apiEndpoint}obterHistoricoDoc`;
+        url += `&doc_id=${id}`;
+
+        return url;
+    }
+
 }

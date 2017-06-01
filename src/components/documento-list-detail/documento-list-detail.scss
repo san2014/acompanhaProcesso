@@ -16,4 +16,16 @@ ion-row.error {
   background-color: #f2dede;
 }    
 
+
+.list-content-page {
+  ion-note {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 14px;
+  }
+  .text-medium {
+    font-size: 11px;
+  }
+}
+
 }

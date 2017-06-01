@@ -1,5 +1,6 @@
+import { DetailHistoricoPage } from './../../pages/detail-historico/detail-historico';
 import { Component, Input } from '@angular/core';
-import { NavParams } from "ionic-angular";
+import { NavParams, NavController, LoadingController } from "ionic-angular";
 
 import { DocumentoProvider } from './../../providers/documento-provider';
 
@@ -15,16 +16,38 @@ export class DocumentoListDetail {
 
   constructor(
       public navParams: NavParams,
-      public documentoProvider: DocumentoProvider) {
+      public documentoProvider: DocumentoProvider,
+      public loadingCtrl: LoadingController,
+      public navCtrl: NavController) {
 
       this.initialize();
   }
 
   initialize(){
     
+    let loading = this.loadingCtrl.create({
+      content: 'carregando...'
+    });
+
+    loading.present();    
+
     this.documento = this.navParams.get('documento');
 
-    this.historico = this.documentoProvider.getHistoricoDocumento(this.documento);
+
+		this.documentoProvider.getHistoricoDocumento(this.documento.id)
+      .then( data => {
+			
+		  	this.historico = data;
+
+        loading.dismiss();
+
+		});     
+
+  }
+
+  detailMovimentacao(movimentacao){
+    
+    this.navCtrl.push(DetailHistoricoPage, {'historico' : movimentacao});
 
   }
 
