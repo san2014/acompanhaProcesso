@@ -109,16 +109,29 @@ export class DocumentoProvider {
 
   }
 
-  getHistoricoDocumento(documento: any){
+  getHistoricoDocumento(idDoc: number){
 
-    return [
+/*    return [
       {id: 1, data: Date.now(), estagio: 'Inicial', parecer:'parecer 1'},
       {id: 2, data: Date.now(), estagio: 'Entrada', parecer:'parecer 2'},
       {id: 3, data: Date.now(), estagio: 'Distribuição', parecer:'parecer 3'},
       {id: 4, data: Date.now(), estagio: 'Encaminhado', parecer:'parecer 4'},
       {id: 5, data: Date.now(), estagio: 'Deferido', parecer:'parecer 5'},
       {id: 6, data: Date.now(), estagio: 'Arquivar', parecer:'parecer 6'}
-    ]
+    ]*/
+
+    let url = EndpointConfig.getUrlObteeHistoricDoc(idDoc);
+
+    return new Promise(resolve => {
+
+      this.http.get(url).map(res => res.json())
+        .subscribe(data => {
+
+          resolve(data);
+          
+        }, err => resolve(null));
+
+      })    
 
   }
 

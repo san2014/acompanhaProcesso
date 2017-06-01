@@ -24,7 +24,16 @@ export class DocumentoListDetail {
     
     this.documento = this.navParams.get('documento');
 
-    this.historico = this.documentoProvider.getHistoricoDocumento(this.documento);
+    console.log(this.documento.id);
+
+		this.documentoProvider.getHistoricoDocumento(this.documento.id)
+      .then( data => {
+			
+		  	this.historico = data;
+
+        console.log(data);
+
+		});     
 
   }
 
