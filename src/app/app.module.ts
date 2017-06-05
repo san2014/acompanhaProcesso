@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { DocumentViewer } from '@ionic-native/document-viewer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -50,7 +51,8 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DocumentoProvider,
     UtilProvider,
-    InAppBrowser
+    InAppBrowser,
+    DocumentViewer
   ]
 })
 export class AppModule {}
