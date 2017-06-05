@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DocumentoListDetail } from './../../components/documento-list-detail/documento-list-detail';
 import { DocumentoAddPage } from './../documento-add/documento-add';
 import { DocumentoProvider } from './../../providers/documento-provider';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @IonicPage()
 @Component({
@@ -16,6 +17,8 @@ export class AcompanhaDocumento {
   constructor(
     public navCtrl: NavController, 
     private documentoProvider: DocumentoProvider,
+    public loadingCtrl: LoadingController,
+    private iab: InAppBrowser,
     public navParams: NavParams) {
     
     this.initialize();
@@ -24,11 +27,27 @@ export class AcompanhaDocumento {
 
   initialize(){
 
+    let loading = this.loadingCtrl.create({
+      content: 'consultando...'
+    });
+
+    loading.present();
+    
+
 		this.documentoProvider.getDocumentosAdicionados().then( data => {
 			
 			this.documentos = data;
 
+      loading.dismiss();
+
 		}); 
+
+  }
+
+  openBrowser(){
+    const browser = this.iab.create('https://ionicframework.com/');
+
+    browser.show();
 
   }
 

@@ -15,6 +15,7 @@ import { DocumentoListView } from './../components/documento-list-view/documento
 import { DocumentoProvider } from "../providers/documento-provider";
 import { UtilProvider } from "../providers/util-provider";
 import { DetailHistoricoPage } from './../pages/detail-historico/detail-historico';
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DetailHistoricoPage } from './../pages/detail-historico/detail-historic
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DocumentoProvider,
-    UtilProvider
+    UtilProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}
