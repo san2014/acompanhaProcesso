@@ -33,7 +33,6 @@ export class DocumentoListDetail {
 
     this.documento = this.navParams.get('documento');
 
-
 		this.documentoProvider.getHistoricoDocumento(this.documento.id)
       .then( data => {
 			
