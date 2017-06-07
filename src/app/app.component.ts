@@ -15,7 +15,7 @@ import { AcompanhaDocumento } from "../pages/acompanha-documento/acompanha-docum
               {{ menuSection.title }}
               <ion-icon name="arrow-foward" item-right></ion-icon>
             </button>
-            <button ion-button menuClose>Close Menu</button>
+            <button ion-button menuClose>Fechar</button>
           </ion-list-header>
         </ion-list>
       </ion-content>
@@ -39,7 +39,7 @@ export class MyApp {
       statusBar.styleDefault();
 
       this.menuSections = [
-        {title: 'pages.tarefa.title', component: AcompanhaDocumento},
+        {title: 'Seus Documentos', component: AcompanhaDocumento},
       ]
 
     });

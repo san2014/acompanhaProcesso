@@ -48,7 +48,7 @@ export class AcompanhaDocumento {
 
   openBrowser(){
 
-    const options: DocumentViewerOptions = {
+/*    const options: DocumentViewerOptions = {
       title: "doc",
       documentView: {closeLabel : 'ok'},
       navigationView: {closeLabel : 'ok'},
@@ -58,15 +58,13 @@ export class AcompanhaDocumento {
       bookmarks: {enabled: true},
       search: {enabled: true},
       autoClose: {onPause: false}
-    }    
+    }   */ 
 
     let url : string = 'http://www.sucom.ba.gov.br/servicosonline/Web/documentoViewReceberDocumento.php?documentoId=8648572';
 
-    this.document.viewDocument('assets/LICENCAPROVISORIA_8648572.pdf', 'application/pdf', options);
+    const browser = this.iab.create(url);
 
-    //const browser = this.iab.create('http://www.sucom.ba.gov.br/servicosonline/Web/documentoViewReceberDocumento.php?documentoId=8648572');
-
-    //browser.show();
+    browser.show();
 
   }
 
