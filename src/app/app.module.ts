@@ -5,14 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { DocumentViewer } from '@ionic-native/document-viewer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { UtilProvider } from "../providers/util-provider";
-import { DocumentoProvider } from "../providers/documento-provider";
-import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { AcompanhaDocumentoModule } from "../pages/acompanha-documento/acompanha-documento.module";
+import { DocumentoProvider } from "../providers/documento-provider";
 
 @NgModule({
   declarations: [
@@ -25,12 +23,13 @@ import { AcompanhaDocumentoModule } from "../pages/acompanha-documento/acompanha
     HttpModule,
     IonicStorageModule.forRoot(),
     HttpModule,
-    AcompanhaDocumentoModule
+    AcompanhaDocumentoModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    HomePage
   ],
   providers: [
     StatusBar,
@@ -38,8 +37,6 @@ import { AcompanhaDocumentoModule } from "../pages/acompanha-documento/acompanha
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DocumentoProvider,
     UtilProvider,
-    InAppBrowser,
-    DocumentViewer
   ]
 })
 export class AppModule {}

@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Responder Convite</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <card-codumento [documento]="documento"></card-codumento>
+  
+  <ion-item>
+    <ion-textarea placeholder=""></ion-textarea>
+  </ion-item>  
+
+  <button ion-button block (click)="responder()">Enviar</button>
+  
+
+</ion-content>

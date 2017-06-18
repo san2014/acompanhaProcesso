@@ -16,6 +16,15 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-row>
+    <ion-col *ngIf="temProduto"> 
+      <button ion-button (click)="openBrowser()">Produto</button>
+    </ion-col>
+    <ion-col *ngIf="emConvite">
+      <button ion-button (click)="responderConvite()">Responder</button>  
+    </ion-col>  
+  </ion-row>
+
   <ion-list>
 
     <ion-list-header>

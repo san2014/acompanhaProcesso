@@ -7,7 +7,7 @@ import { DetailHistoricoPage } from './detail-historico';
     DetailHistoricoPage,
   ],
   imports: [
-    IonicPageModule.forChild(DetailHistoricoPage),
+    IonicPageModule.forChild(DetailHistoricoPage)
   ],
   exports: [
     DetailHistoricoPage
